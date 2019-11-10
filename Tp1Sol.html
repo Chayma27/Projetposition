@@ -6,7 +6,7 @@
 	var p = document.getElementById("Demonstration");
 	//Nous définisson la fonction que nous avons appelée au haut
 	//Cette fonction récupère les cordonnées géographiques
-p.textContent  = getLocation();
+
 	function getLocation() {
 		if (navigator.geolocation) {
 			//La méthode getCurrentPosition du Modèle (DOM) du navigateur
@@ -37,7 +37,9 @@ p.textContent  = getLocation();
 			break;
 		}
 	}
-
 </script>
+<h3> La position de mon domicile </h3>
+Latitude : 36.8374946 <br> 
+Longitude : 10.1927389
 </body>
 </html>
