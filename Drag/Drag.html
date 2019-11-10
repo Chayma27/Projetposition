@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8"/>
+<head>
+	<title> Exemple de Drag and Drop d'une Image</title>
+</head>
+<body>
+	<div draggable ="true" id="1" Une deuxiéme Zone> </div>
+	<script>
+      var dragImg = new Image ();
+      dragImg.src = 'question.png';
+      document.querySelector ('*[draggable="true"]').addEventListener ('dragstart', function(e){
+      	e.dataTransfer.setDragImage(dragImg, 20 , 20 );
+      })
+	</script>
+
+</body>
+</html>
