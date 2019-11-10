@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Mon 1er Tp</title>
-</head>
 <body>
-<div id="infoposition"></div>
-<div id="map"> </div>
+<p id="Demonstration"></p>
 <script>
-    var inf = document.getElementById("infoposition");
+	var p = document.getElementById("Demonstration");
 	//Nous définisson la fonction que nous avons appelée au haut
 	//Cette fonction récupère les cordonnées géographiques
-		
-		//La fonction d'affichage
+p.textContent  = getLocation();
+	function getLocation() {
+		if (navigator.geolocation) {
+			//La méthode getCurrentPosition du Modèle (DOM) du navigateur
+			navigator.geolocation.getCurrentPosition(showPosition,showError);
+		} else {
+			//en Cas d'erreur
+			p.innerHTML ="Geolocation n'est pas supporté par ce navigateur !";
+		}
+	}
+	//La fonction d'affichage
 	function showPosition(position) {
-		//Nous écrivons au niveau du paragraphe "demo"
-		
-var tatlon = position.coords.latitude +"," + position.coords.longitude;
-        var img_url="http://maps.googleapis.com/maps/api/staticmap?center="+tatlon+"&zoom=14&size=400*300&key=AIzaSyBu-<16DdpKAjTmJNIgngS6HL_kDIKU0aU";
-           document.getElementById(map).innerHTML="<img src='"+img_url+"'>";
-            		}
-
+		//Nous écrivons au niveau du paragraphe "demonstartion"
+		p.innerHTML = "Votre latitude : " + position.coords.latitude + "<br> Votre longitude : " + position.coords.longitude;
+	}
 	function showError (error) {
 		switch (error.code){
 			case error.PERMISSION_DENIED:
@@ -35,8 +36,8 @@ var tatlon = position.coords.latitude +"," + position.coords.longitude;
 			x.innerHTML ="Une erreur inconnue est survenue"
 			break;
 		}
-	document.getElementById("infoposition").innerHTML=infoposition;
 	}
+
 </script>
 </body>
 </html>
