@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html>
-<body>
+<body onload="getLocation()">
 <p id="Demonstration"></p>
+
+<h3 id="domicile"> La position de mon domicile </h3>
+<p id="latitude"> Latitude : 36.8374946 </p> 
+<p id="longitude"> Longitude : 10.1927389 </p>
 <script>
 	var p = document.getElementById("Demonstration");
 	//Nous définisson la fonction que nous avons appelée au haut
 	//Cette fonction récupère les cordonnées géographiques
-
+	var pLatitude = document.getElementById("latitude");
+	var pLongitude = document.getElementById("longitude");
+	var hDomicile = document.getElementById("domicile");
 	function getLocation() {
 		if (navigator.geolocation) {
 			//La méthode getCurrentPosition du Modèle (DOM) du navigateur
 			navigator.geolocation.getCurrentPosition(showPosition,showError);
+			
 		} else {
 			//en Cas d'erreur
 			p.innerHTML ="Geolocation n'est pas supporté par ce navigateur !";
@@ -19,6 +26,9 @@
 	//La fonction d'affichage
 	function showPosition(position) {
 		//Nous écrivons au niveau du paragraphe "demonstartion"
+		pLongitude.textContent = " ";
+			pLatitude.textContent = " ";
+			hDomicile.textContent = " ";
 		p.innerHTML = "Votre latitude : " + position.coords.latitude + "<br> Votre longitude : " + position.coords.longitude;
 	}
 	function showError (error) {
@@ -38,8 +48,6 @@
 		}
 	}
 </script>
-<h3> La position de mon domicile </h3>
-Latitude : 36.8374946 <br> 
-Longitude : 10.1927389
+
 </body>
 </html>
