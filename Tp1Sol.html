@@ -62,7 +62,7 @@
             map.setCenter(pos);
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
-          });
+          },showError);
 
         } else {
           // Browser doesn't support Geolocation
@@ -77,7 +77,30 @@
                               'Error: Your browser doesn\'t support geolocation.');
         infoWindow.open(map);
       }
+      function showError (error) {
+		switch (error.code){
+			case error.PERMISSION_DENIED:
+			x.innerHTML ="L'utilisateur a rejeté la requête pour la géolocalisation"
+			break;
+			case error.POSITION_UNVAILABLE:
+			x.innerHTML ="Les informations de localisation ne sont pas disponible"
+			break;
+			case error.TIMEOUT:
+			x.innerHTML ="Temps de traitement de la requête est dépassé"
+			break;
+			case error.UNKHOWN_ERROR:
+			x.innerHTML ="Une erreur inconnue est survenue"
+			break;
+		}
+	}
+	marker = new google.maps.Marker({
+    position: latlng,
+    map: map,
+    title:"Vous êtes ici",
+    icon: "fleche.jpg"
+});
     </script>
+
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWzTIfMBnzhfv52dhM_2gP55CPvUtP9UE&callback=initMap">
     </script>
