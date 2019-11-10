@@ -20,8 +20,6 @@ var tatlon = position.coords.latitude +"," + position.coords.longitude;
            document.getElementById(map).innerHTML="<img src='"+img_url+"'>";
             		}
 
-		var survId = navigator.geolocation.getCurrentPosition(showPosition);
-
 	function showError (error) {
 		switch (error.code){
 			case error.PERMISSION_DENIED:
